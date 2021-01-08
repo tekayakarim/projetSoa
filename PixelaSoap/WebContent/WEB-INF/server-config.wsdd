@@ -1,0 +1,139 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\abdel\Documents\soa\mini-projet-soa\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\PixelaSoap\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="ConsomationApi" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="getPixel" qname="ns1:getPixel" returnQName="ns1:getPixelReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:token" type="xsd:string"/>
+   <ns2:parameter qname="ns1:id" type="xsd:string"/>
+   <ns2:parameter qname="ns1:username" type="xsd:string"/>
+   <ns2:parameter qname="ns1:date" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="updateUser" qname="ns2:updateUser" returnQName="ns2:updateUserReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:token" type="xsd:string"/>
+   <ns1:parameter qname="ns2:newToken" type="xsd:string"/>
+   <ns1:parameter qname="ns2:username" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deleteUser" qname="ns3:deleteUser" returnQName="ns3:deleteUserReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:token" type="xsd:string"/>
+   <ns1:parameter qname="ns3:username" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="creatGraph" qname="ns4:creatGraph" returnQName="ns4:creatGraphReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:token" type="xsd:string"/>
+   <ns1:parameter qname="ns4:id" type="xsd:string"/>
+   <ns1:parameter qname="ns4:name" type="xsd:string"/>
+   <ns1:parameter qname="ns4:unit" type="xsd:string"/>
+   <ns1:parameter qname="ns4:color" type="xsd:string"/>
+   <ns1:parameter qname="ns4:username" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="showUserProfil" qname="ns5:showUserProfil" soapAction="" xmlns:ns5="http://api">
+   <ns1:parameter qname="ns5:username" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getAllGraph" qname="ns6:getAllGraph" returnQName="ns6:getAllGraphReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:username" type="xsd:string"/>
+   <ns1:parameter qname="ns6:token" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updateGraph" qname="ns7:updateGraph" returnQName="ns7:updateGraphReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:token" type="xsd:string"/>
+   <ns1:parameter qname="ns7:id" type="xsd:string"/>
+   <ns1:parameter qname="ns7:name" type="xsd:string"/>
+   <ns1:parameter qname="ns7:unit" type="xsd:string"/>
+   <ns1:parameter qname="ns7:color" type="xsd:string"/>
+   <ns1:parameter qname="ns7:username" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="creatUser" qname="ns8:creatUser" returnQName="ns8:creatUserReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:token" type="xsd:string"/>
+   <ns1:parameter qname="ns8:username" type="xsd:string"/>
+   <ns1:parameter qname="ns8:ATOS" type="xsd:string"/>
+   <ns1:parameter qname="ns8:notMinor" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updatePixel" qname="ns9:updatePixel" returnQName="ns9:updatePixelReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:token" type="xsd:string"/>
+   <ns1:parameter qname="ns9:id" type="xsd:string"/>
+   <ns1:parameter qname="ns9:username" type="xsd:string"/>
+   <ns1:parameter qname="ns9:date" type="xsd:string"/>
+   <ns1:parameter qname="ns9:quantity" type="xsd:string"/>
+   <ns1:parameter qname="ns9:data" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="creatPixel" qname="ns10:creatPixel" returnQName="ns10:creatPixelReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:token" type="xsd:string"/>
+   <ns1:parameter qname="ns10:id" type="xsd:string"/>
+   <ns1:parameter qname="ns10:username" type="xsd:string"/>
+   <ns1:parameter qname="ns10:date" type="xsd:string"/>
+   <ns1:parameter qname="ns10:quantity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deletGraph" qname="ns11:deletGraph" returnQName="ns11:deletGraphReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:id" type="xsd:string"/>
+   <ns1:parameter qname="ns11:username" type="xsd:string"/>
+   <ns1:parameter qname="ns11:token" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deletpixel" qname="ns12:deletpixel" returnQName="ns12:deletpixelReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:id" type="xsd:string"/>
+   <ns1:parameter qname="ns12:username" type="xsd:string"/>
+   <ns1:parameter qname="ns12:token" type="xsd:string"/>
+   <ns1:parameter qname="ns12:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getPixelsGraph" qname="ns13:getPixelsGraph" returnQName="ns13:getPixelsGraphReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://api" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:token" type="xsd:string"/>
+   <ns1:parameter qname="ns13:id" type="xsd:string"/>
+   <ns1:parameter qname="ns13:username" type="xsd:string"/>
+   <ns1:parameter qname="ns13:date" type="xsd:string"/>
+   <ns1:parameter qname="ns13:date1" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="deletGraph getPixelsGraph creatPixel updatePixel creatGraph getPixel updateUser showUserProfil getAllGraph creatUser deleteUser updateGraph deletpixel"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ConsomationApi"/>
+  <ns1:parameter name="className" value="api.ConsomationApi"/>
+  <ns1:parameter name="wsdlServicePort" value="ConsomationApi"/>
+  <ns1:parameter name="schemaQualified" value="http://api"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://api"/>
+  <ns1:parameter name="wsdlServiceElement" value="ConsomationApiService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

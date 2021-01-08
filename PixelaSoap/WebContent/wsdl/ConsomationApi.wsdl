@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://api" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://api" xmlns:intf="http://api" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://api" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getPixel">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="id" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPixelResponse">
+    <complexType>
+     <sequence>
+      <element name="getPixelReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateUser">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="newToken" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateUserResponse">
+    <complexType>
+     <sequence>
+      <element name="updateUserReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteUser">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteUserResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteUserReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creatGraph">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="id" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+      <element name="unit" type="xsd:string"/>
+      <element name="color" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creatGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="creatGraphReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="showUserProfil">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="showUserProfilResponse">
+    <complexType/>
+   </element>
+   <element name="getAllGraph">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllGraphReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateGraph">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="id" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+      <element name="unit" type="xsd:string"/>
+      <element name="color" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="updateGraphReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creatUser">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="ATOS" type="xsd:string"/>
+      <element name="notMinor" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creatUserResponse">
+    <complexType>
+     <sequence>
+      <element name="creatUserReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePixel">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="id" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="quantity" type="xsd:string"/>
+      <element name="data" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePixelResponse">
+    <complexType>
+     <sequence>
+      <element name="updatePixelReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creatPixel">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="id" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="quantity" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creatPixelResponse">
+    <complexType>
+     <sequence>
+      <element name="creatPixelReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletGraph">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="deletGraphReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletpixel">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletpixelResponse">
+    <complexType>
+     <sequence>
+      <element name="deletpixelReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPixelsGraph">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="id" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="date1" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPixelsGraphResponse">
+    <complexType>
+     <sequence>
+      <element name="getPixelsGraphReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="creatGraphRequest">
+
+      <wsdl:part element="impl:creatGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creatUserResponse">
+
+      <wsdl:part element="impl:creatUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletGraphRequest">
+
+      <wsdl:part element="impl:deletGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePixelRequest">
+
+      <wsdl:part element="impl:updatePixel" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletpixelResponse">
+
+      <wsdl:part element="impl:deletpixelResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPixelsGraphResponse">
+
+      <wsdl:part element="impl:getPixelsGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creatUserRequest">
+
+      <wsdl:part element="impl:creatUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateUserRequest">
+
+      <wsdl:part element="impl:updateUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPixelResponse">
+
+      <wsdl:part element="impl:getPixelResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateUserResponse">
+
+      <wsdl:part element="impl:updateUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllGraphResponse">
+
+      <wsdl:part element="impl:getAllGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="showUserProfilRequest">
+
+      <wsdl:part element="impl:showUserProfil" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="showUserProfilResponse">
+
+      <wsdl:part element="impl:showUserProfilResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllGraphRequest">
+
+      <wsdl:part element="impl:getAllGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletGraphResponse">
+
+      <wsdl:part element="impl:deletGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateGraphRequest">
+
+      <wsdl:part element="impl:updateGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserResponse">
+
+      <wsdl:part element="impl:deleteUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creatGraphResponse">
+
+      <wsdl:part element="impl:creatGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateGraphResponse">
+
+      <wsdl:part element="impl:updateGraphResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPixelsGraphRequest">
+
+      <wsdl:part element="impl:getPixelsGraph" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserRequest">
+
+      <wsdl:part element="impl:deleteUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creatPixelRequest">
+
+      <wsdl:part element="impl:creatPixel" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletpixelRequest">
+
+      <wsdl:part element="impl:deletpixel" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPixelRequest">
+
+      <wsdl:part element="impl:getPixel" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePixelResponse">
+
+      <wsdl:part element="impl:updatePixelResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creatPixelResponse">
+
+      <wsdl:part element="impl:creatPixelResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ConsomationApi">
+
+      <wsdl:operation name="getPixel">
+
+         <wsdl:input message="impl:getPixelRequest" name="getPixelRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPixelResponse" name="getPixelResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateUser">
+
+         <wsdl:input message="impl:updateUserRequest" name="updateUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateUserResponse" name="updateUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdl:input message="impl:deleteUserRequest" name="deleteUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteUserResponse" name="deleteUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creatGraph">
+
+         <wsdl:input message="impl:creatGraphRequest" name="creatGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:creatGraphResponse" name="creatGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="showUserProfil">
+
+         <wsdl:input message="impl:showUserProfilRequest" name="showUserProfilRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:showUserProfilResponse" name="showUserProfilResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllGraph">
+
+         <wsdl:input message="impl:getAllGraphRequest" name="getAllGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllGraphResponse" name="getAllGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateGraph">
+
+         <wsdl:input message="impl:updateGraphRequest" name="updateGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateGraphResponse" name="updateGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creatUser">
+
+         <wsdl:input message="impl:creatUserRequest" name="creatUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:creatUserResponse" name="creatUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePixel">
+
+         <wsdl:input message="impl:updatePixelRequest" name="updatePixelRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updatePixelResponse" name="updatePixelResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creatPixel">
+
+         <wsdl:input message="impl:creatPixelRequest" name="creatPixelRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:creatPixelResponse" name="creatPixelResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletGraph">
+
+         <wsdl:input message="impl:deletGraphRequest" name="deletGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deletGraphResponse" name="deletGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletpixel">
+
+         <wsdl:input message="impl:deletpixelRequest" name="deletpixelRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deletpixelResponse" name="deletpixelResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPixelsGraph">
+
+         <wsdl:input message="impl:getPixelsGraphRequest" name="getPixelsGraphRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPixelsGraphResponse" name="getPixelsGraphResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ConsomationApiSoapBinding" type="impl:ConsomationApi">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getPixel">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPixelRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPixelResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creatGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creatGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creatGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="showUserProfil">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="showUserProfilRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="showUserProfilResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creatUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creatUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creatUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePixel">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePixelRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePixelResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="creatPixel">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creatPixelRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creatPixelResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deletGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deletGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletpixel">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deletpixelRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deletpixelResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPixelsGraph">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPixelsGraphRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPixelsGraphResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ConsomationApiService">
+
+      <wsdl:port binding="impl:ConsomationApiSoapBinding" name="ConsomationApi">
+
+         <wsdlsoap:address location="http://localhost:8080/PixelaSoap/services/ConsomationApi"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

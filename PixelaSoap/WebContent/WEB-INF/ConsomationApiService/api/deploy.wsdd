@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ConsomationApiService WSDL service -->
+
+  <service name="ConsomationApi" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://api"/>
+      <parameter name="wsdlServiceElement" value="ConsomationApiService"/>
+      <parameter name="schemaQualified" value="http://api"/>
+      <parameter name="wsdlServicePort" value="ConsomationApi"/>
+      <parameter name="className" value="api.ConsomationApi"/>
+      <parameter name="wsdlPortType" value="ConsomationApi"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPixel" qname="operNS:getPixel" returnQName="retNS:getPixelReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateUser" qname="operNS:updateUser" returnQName="retNS:updateUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:newToken" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteUser" qname="operNS:deleteUser" returnQName="retNS:deleteUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="creatGraph" qname="operNS:creatGraph" returnQName="retNS:creatGraphReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:unit" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:color" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" name="showUserProfil" qname="operNS:showUserProfil" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAllGraph" qname="operNS:getAllGraph" returnQName="retNS:getAllGraphReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateGraph" qname="operNS:updateGraph" returnQName="retNS:updateGraphReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:unit" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:color" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="creatUser" qname="operNS:creatUser" returnQName="retNS:creatUserReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ATOS" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:notMinor" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updatePixel" qname="operNS:updatePixel" returnQName="retNS:updatePixelReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:quantity" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="creatPixel" qname="operNS:creatPixel" returnQName="retNS:creatPixelReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:quantity" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deletGraph" qname="operNS:deletGraph" returnQName="retNS:deletGraphReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deletpixel" qname="operNS:deletpixel" returnQName="retNS:deletpixelReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api" xmlns:retNS="http://api" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPixelsGraph" qname="operNS:getPixelsGraph" returnQName="retNS:getPixelsGraphReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date" type="tns:string"/>
+        <parameter xmlns:pns="http://api" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date1" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="deletGraph getPixelsGraph creatPixel updatePixel creatGraph getPixel updateUser showUserProfil getAllGraph creatUser deleteUser updateGraph deletpixel"/>
+
+  </service>
+</deployment>
